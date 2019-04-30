@@ -43,11 +43,12 @@ public class Main
             if(videos!=null && !videos.isEmpty()){
                 for(Video video:videos){
                     String query="id="+video.getVideoId()+"&vid="+video.getUuid();
-                    String result = HttpRequestUtil.sendGet(path, query);
-                    logger.debug("删除视频，接口返回结果===="+result);
-                    System.out.println("删除视频，接口返回结果===="+result);
-                    logger.debug("延迟" + (delay / 1000L) + "s发送接口通知");
-                    System.out.println("延迟" + (delay / 1000L) + "s发送接口通知");
+                    try {
+                        String result = HttpRequestUtil.sendGet(path, query);
+                        logger.debug("删除视频，接口返回结果===="+result+",延迟" + (delay / 1000L) + "s发送接口通知");
+                    }catch (Exception e){
+                        ;
+                    }
                     Thread.sleep(delay);
                 }
             }
@@ -118,7 +119,7 @@ public class Main
     }
 
     public static void main(String[] args) {
-        System.out.println("程序启动完成,开始删除过期视频文件............");
+        logger.debug("程序启动完成,开始删除过期视频文件............");
         delTimeOutVideos();
     }
 }
