@@ -119,7 +119,7 @@ public class Main
     }
 
     public static void main(String[] args) {
-        logger.debug("程序启动完成,开始删除过期视频文件............");
+        System.out.println("程序启动完成,开始删除过期视频文件............");
         delTimeOutVideos();
     }
 }
