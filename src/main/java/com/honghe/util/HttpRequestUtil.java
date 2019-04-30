@@ -65,8 +65,6 @@ public class HttpRequestUtil
         try
         {
             logger.debug("get请求地址url=" + mPath);
-            System.out.println("get请求地址url=" + mPath);
-
             URL restURL = new URL(mPath);
             HttpURLConnection conn = (HttpURLConnection)restURL.openConnection();
             conn.setRequestMethod("GET");
